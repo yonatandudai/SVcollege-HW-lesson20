@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react';
 import { TransactionsContext } from '../contexts/TransanctionsContext';
 import { Transaction, TransactionType, Category } from '../types';
+import { Link } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid'; // Import uuid for unique IDs
 
 type Props = {};
@@ -33,14 +34,14 @@ export default function AddTransaction({}: Props) {
     // Reset form state
     setType(TransactionType.Income);
     setCategory(Category.Salary);
-    setAmount('0');
+    setAmount('');
     setDescription('');
     setDate('');
     setIsFormVisible(false);
   };
 
   return (
-    <div className="w-full max-w-4xl mt-6">
+    <div className="flex flex-col items-center justify-start w-full min-h-screen bg-gray-200 p-10">
       <h1 className="text-2xl font-bold mb-4">Add Transaction</h1>
 
       {isFormVisible ? (
@@ -110,21 +111,36 @@ export default function AddTransaction({}: Props) {
             />
           </div>
 
-          <button
-            type="submit"
-            className="bg-blue-500 px-4 py-2 rounded cursor-pointer text-white font-bold"
-          >
-            Add Transaction
-          </button>
+                <button
+                type="submit"
+                disabled={!amount || !description || !date}
+                className={`px-4 py-2 rounded font-bold text-white ${
+                    !amount || !description || !date
+                    ? 'bg-gray-400 cursor-not-allowed'
+                    : 'bg-blue-500 cursor-pointer'
+                }`}
+                >
+                Add Transaction
+            </button>
+
+          <div className="w-full text-center mt-4">
+            <Link to="/" className="bg-blue-500 px-4 py-2 rounded cursor-pointer text-white font-bold">
+                Back to Transactions HomePage
+            </Link>
+            </div>
         </form>
       ) : (
         <button
-          className="bg-blue-500 px-4 py-2 rounded cursor-pointer text-white font-bold"
+          className="flex flex-col bg-blue-500 px-4 py-2 mb-8 rounded cursor-pointer text-white font-bold"
           onClick={() => setIsFormVisible(true)}
         >
           Add Transaction
         </button>
       )}
+        {!isFormVisible && (
+        <Link to="/" className="bg-blue-500 px-4 py-2 rounded cursor-pointer text-white font-bold mt-4">
+            Back to Transactions HomePage
+        </Link>)}
     </div>
   );
 }

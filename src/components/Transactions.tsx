@@ -1,14 +1,14 @@
 import { useContext } from 'react';
-import AddTransaction from './AddTransaction';
 import TransactionComp from './TransactionComp';
 import { TransactionsContext } from '../contexts/TransanctionsContext';
 import { TransactionType } from '../types';
-import Expenses from './Expenses';
+import { Link } from 'react-router-dom';
 
 type Props = {};
 
 export default function Transactions({}: Props) {
   const { transactions = [] } = useContext(TransactionsContext) || {};
+
 
   const totalIncome = transactions
     .filter((t) => t.TransactionType === TransactionType.Income)
@@ -35,13 +35,17 @@ export default function Transactions({}: Props) {
             <TransactionComp key={index} transaction={transaction} />
           ))}
       </div>
-      <AddTransaction />
-      <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-4xl p-4 mt-6 mb-6 bg-white shadow-md rounded-md">
+      <div className="flex flex-col md:flex-row items-center justify-between w-full max-w-4xl p-4 mt-6 mb-8 bg-white shadow-md rounded-md">
         <h1 className="text-2xl font-bold">Income: ${totalIncome}</h1>
         <h1 className="text-2xl font-bold">Expenses: ${totalExpenses}</h1>
         <h1 className="text-2xl font-bold">Total: ${total}</h1>
       </div>
-      <Expenses />
+      <Link to="/add-transaction" className="bg-blue-500 px-4 py-2 mb-8 rounded cursor-pointer text-white font-bold">
+        Add Transaction
+      </Link>
+      <Link to="/expenses" className="bg-blue-500 px-4 py-2 mb-10 rounded cursor-pointer text-white font-bold">
+        View Expenses by Category
+      </Link>
     </div>
   );
 }
