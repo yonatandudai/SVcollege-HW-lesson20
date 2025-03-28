@@ -1,54 +1,32 @@
-# React + TypeScript + Vite
+React + TS שיעורי בית
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+לפניכם משימה לפתח בReact+TS+Tailwind
 
-Currently, two official plugins are available:
+פרוייקט ניהול תקציב:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+יש לייצר אפליקצייה אשר נותנת למשתמשים לנהל את המצב הפיננסי שלהם על ידי מעקב של הכנסות ושל הוצאות.
 
-## Expanding the ESLint configuration
+משתמשים יוכלו להוסיף, לצפות , ולצפות בטרנזקציות לפי קטגוריות.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+בנוסף נוכל לראות גם תקציר של הפעילות שלהם.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+ניהול טרנזקציות:  
+**
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- הוספת טרנזקציה – משתמשים יוכלו להוסיף טרנזקציות , לציין כמות, סוג הטרנזקציה(הוצאה או הכנסה), קטגוריה, תיאור ותאריך.
+- צפייה בטרנזקציות – משתמשים יוכלו לצפות ברשימה של כל הטרנזקציות שלהם, מוצג בסדר כרונולוגי הפוך.
+- עריכת/ מחיקת טרנזקציה – משתמשים יוכלו לערוך את תיאור ההוצאה / הכנסה ולמחוק טרנזקציות.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+**תקציר תקציב:**
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+- יש להציג את סך ההכנסות הכולל, סך ההוצאות הכולל, וסך הכל של חסכונות על פי הטרנזקציות שהוכנסו.
+- יש לעדכן זאת בזמן את בזמן שטרנזקציות נערכות / נוספות / נמחקות.
+
+**צפייה לפי קטגוריה:**
+
+- יש להציג פירוט של הוצאות על פי קטגוריות, ולהראות כמה סך הכל בוזבז על כל קטגוריה.
+
+דוגמא לאפליקציה:
+![image](https://github.com/user-attachments/assets/36ad85ef-0f0e-468d-b3d8-ec6a4be71ee3)
+
+![image](https://github.com/user-attachments/assets/5b7f546b-9551-4cef-8bd2-6d0ebc7f0eae)
